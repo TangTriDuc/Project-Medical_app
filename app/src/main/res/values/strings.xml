@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Covid19App</string>
+    <string name="covid_19">Covid-19</string>
+    <string name="see_statistics">See Statistics</string>
+
+    <!--Login-->
+    <string name="enter_your_email_address">Enter your email address:</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="cancel">Cancel</string>
+    <string name="reset">Reset</string>
+    <string name="welcome">Welcome</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_an_user_login">Already an user? Login</string>
+    <string name="not_yet_registered_sign_up">Not yet registered? Sign Up</string>
+
+    <!--Process Covid Statics-->
+    <string name="total_cases">Total Cases</string>
+    <string name="recovered">Recovered</string>
+    <string name="deaths">Deaths</string>
+    <string name="active">Active</string>
+    <string name="today_cases">Today Cases</string>
+    <string name="today_deaths">Today Deaths</string>
+    <string name="total_deaths">Total Deaths</string>
+    <string name="critical">Critical</string>
+    <string name="global_stats">Global Stats</string>
+    <string name="affected_countries">Affected Countries</string>
+    <string name="track_countries">Track countries</string>
+    <string name="cases">Cases</string>
+    <string name="search">Search</string>
+    <string name="country_name">Country Name</string>
+    <string name="country">Country</string>
+
+</resources>
