@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +38,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText loginEmail, loginPassword;
@@ -52,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInButton googleBtn;
     GoogleSignInOptions gOptions;
     GoogleSignInClient gClient;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +74,10 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         //Make function go back in action bar
-        getSupportActionBar().setTitle("Go Back Sign Up");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Go Back Sign Up"); //Thiết lập tiêu đề nếu muốn
+        actionBar.setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //Xly show or hide password
         loginPassword.setOnTouchListener(new View.OnTouchListener() {
@@ -204,8 +210,7 @@ public class LoginActivity extends AppCompatActivity {
         GoogleSignInAccount gAccount = GoogleSignIn.getLastSignedInAccount(this);
         if (gAccount != null){
             finish();
-            Intent intent = new Intent(LoginActivity.this, CovidStatistics.class);
-            startActivity(intent);
+            startActivity(new Intent(LoginActivity.this, CovidStatistics.class));
         }
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -217,14 +222,14 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 task.getResult(ApiException.class);
                                 finish();
-                                Intent intent = new Intent(LoginActivity.this, CovidStatistics.class);
-                                startActivity(intent);
+                                startActivity(new Intent(LoginActivity.this, CovidStatistics.class));
                             } catch (ApiException e){
                                 Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
                 });
+
         googleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -232,6 +237,8 @@ public class LoginActivity extends AppCompatActivity {
                 activityResultLauncher.launch(signInIntent);
             }
         });
+
+
     }
 
     //Process ActionBack to go back in action bar
@@ -239,7 +246,9 @@ public class LoginActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home)
             finish();
+
         return super.onOptionsItemSelected(item);
     }
+
 }
 

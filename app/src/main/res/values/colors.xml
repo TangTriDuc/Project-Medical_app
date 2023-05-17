@@ -26,6 +26,7 @@
     <color name="color_two">#E3E0E0</color>
 
     <color name="btn_bg">#FC4F00</color>
+    <color name="btn_forget">#D54799</color>
 
     <color name="cases">#FFA726</color>
     <color name="recovered">#66BB6A</color>

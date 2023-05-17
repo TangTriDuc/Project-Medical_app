@@ -10,9 +10,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import org.eazegraph.lib.charts.BarChart;
-import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.BarModel;
-import org.eazegraph.lib.models.PieModel;
 
 
 public class DetailActivity extends AppCompatActivity {
@@ -21,8 +19,7 @@ public class DetailActivity extends AppCompatActivity {
 
     TextView tvCountry,tvCases,tvRecovered,tvCritical,tvActive,tvTodayCases,tvTotalDeaths,tvTodayDeaths;
 
-    PieChart pieChart1;
-
+    BarChart barChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +44,8 @@ public class DetailActivity extends AppCompatActivity {
         tvTotalDeaths = findViewById(R.id.tvDeaths);
         tvTodayDeaths = findViewById(R.id.tvTodayDeaths);
 
-        pieChart1= findViewById(R.id.piechart1);
-        setupPieChart();
+        barChart = findViewById(R.id.barchart1);
+        setupBarChart();
 
 
         tvCountry.setText(AffectedCountries.countryList.get(positionCountry).getCountry());
@@ -62,19 +59,19 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
-    //Process PieChart
-    private void setupPieChart() {
+    //Process BarChart
+    private void setupBarChart() {
+        // Set up the data for the bar chart
+        barChart.addBar(new BarModel("Cases", Integer.parseInt(AffectedCountries.countryList.get(positionCountry).getCases()), Color.parseColor("#FFA726")));
+        barChart.addBar(new BarModel("Recovered", Integer.parseInt(AffectedCountries.countryList.get(positionCountry).getRecovered()), Color.parseColor("#66BB6A")));
+        barChart.addBar(new BarModel("Critical", Integer.parseInt(AffectedCountries.countryList.get(positionCountry).getCritical()), Color.parseColor("#654E92")));
+        barChart.addBar(new BarModel("Active", Integer.parseInt(AffectedCountries.countryList.get(positionCountry).getActive()), Color.parseColor("#29B6F6")));
+        barChart.addBar(new BarModel("Deaths", Integer.parseInt(AffectedCountries.countryList.get(positionCountry).getDeaths()), Color.parseColor("#EF5350")));
 
-        // Set up the data for the pie chart
-        pieChart1.addPieSlice(new PieModel("Cases", Integer.parseInt(AffectedCountries.countryList.get(positionCountry).getCases()), Color.parseColor("#FFA726")));
-        pieChart1.addPieSlice(new PieModel("Recovered", Integer.parseInt(AffectedCountries.countryList.get(positionCountry).getRecovered()), Color.parseColor("#66BB6A")));
-        pieChart1.addPieSlice(new PieModel("Critical", Integer.parseInt(AffectedCountries.countryList.get(positionCountry).getCritical()), Color.parseColor("#654E92")));
-        pieChart1.addPieSlice(new PieModel("Active", Integer.parseInt(AffectedCountries.countryList.get(positionCountry).getActive()), Color.parseColor("#29B6F6")));
-        pieChart1.addPieSlice(new PieModel("Deaths", Integer.parseInt(AffectedCountries.countryList.get(positionCountry).getDeaths()), Color.parseColor("#EF5350")));
+        // Customize the bar chart
+        barChart.setBarWidth(8); // Adjust the bar width as per your preference
+        barChart.startAnimation();
 
-        //Customize the pie chart
-        pieChart1.setInnerValueString("");  // Remove the inner value string (optional)
-        pieChart1.startAnimation();  // Animate the pie chart
     }
 
     //Process ActionBack to go back

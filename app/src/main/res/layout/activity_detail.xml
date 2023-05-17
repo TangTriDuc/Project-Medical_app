@@ -296,6 +296,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
         app:cardElevation="10dp"
         app:cardCornerRadius="5dp">
 
@@ -305,116 +306,19 @@
             android:orientation="horizontal"
             android:weightSum="2"
             >
-            <org.eazegraph.lib.charts.PieChart
-                android:id="@+id/piechart1"
-                android:layout_width="0dp"
+
+            <org.eazegraph.lib.charts.BarChart
+                android:id="@+id/barchart1"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:padding="6dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
+                android:paddingStart="-5dp"
+                android:paddingEnd="-10dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginBottom="15dp"
-                />
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <!--Make Today Cases-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:gravity="center_vertical">
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/cases"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/today_cases"
-                        android:paddingStart="10dp"/>
-
-                </LinearLayout>
-
-                <!--Make Recovered-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="5dp">
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/recovered"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/recovered"
-                        android:paddingStart="10dp"/>
-
-                </LinearLayout>
-
-                <!--Make Deaths-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="5dp">
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/deaths"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/deaths"
-                        android:paddingStart="10dp"/>
-
-                </LinearLayout>
-
-                <!--Make Active-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="5dp">
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/active"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/active"
-                        android:paddingStart="10dp"/>
-
-                </LinearLayout>
-
-                <!--Make Critical-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="5dp">
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/critical"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/critical"
-                        android:paddingStart="10dp"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_marginBottom="15dp" />
 
         </LinearLayout>
 

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView3;
 
     //Make button call phone
-    private static final String DEFAULT_PHONE_NUMBER = "18003456"; // Replace with your default phone number
+    private static final String DEFAULT_PHONE_NUMBER = "0778990424"; // Replace with your default phone number
     private static final int CALL_PHONE_PERMISSION_REQUEST_CODE = 1;
 
     @Override

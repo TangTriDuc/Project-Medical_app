@@ -512,7 +512,7 @@
         android:background="@drawable/btn_bg"
         android:onClick="goTrackCountries"
         android:padding="5dp"
-        android:text="@string/track_countries"
+        android:text="@string/see_statistics_country"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 

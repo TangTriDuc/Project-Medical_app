@@ -27,10 +27,11 @@
     <string name="critical">Critical</string>
     <string name="global_stats">Global Stats</string>
     <string name="affected_countries">Affected Countries</string>
-    <string name="track_countries">Track countries</string>
+    <string name="see_statistics_country">See Statistics Country</string>
     <string name="cases">Cases</string>
     <string name="search">Search</string>
     <string name="country_name">Country Name</string>
     <string name="country">Country</string>
+    <string name="verify_otp">VERIFY OTP</string>
 
 </resources>
