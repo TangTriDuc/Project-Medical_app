@@ -1,6 +1,7 @@
 package com.example.covid19app;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -26,10 +27,18 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+//        //Make function go back in action bar
+//        getSupportActionBar().setTitle("Details of " + AffectedCountries.countryList.get(positionCountry).getCountry());
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         //Make function go back in action bar
-        getSupportActionBar().setTitle("Details of " + AffectedCountries.countryList.get(positionCountry).getCountry());
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Go Back Choose Country"); //Thiết lập tiêu đề nếu muốn
+        actionBar.setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
 
         Intent intent = getIntent();
         positionCountry = intent.getIntExtra("position", 0);
@@ -46,7 +55,6 @@ public class DetailActivity extends AppCompatActivity {
 
         barChart = findViewById(R.id.barchart1);
         setupBarChart();
-
 
         tvCountry.setText(AffectedCountries.countryList.get(positionCountry).getCountry());
         tvCases.setText(AffectedCountries.countryList.get(positionCountry).getCases());
@@ -73,6 +81,7 @@ public class DetailActivity extends AppCompatActivity {
         barChart.startAnimation();
 
     }
+
 
     //Process ActionBack to go back
     @Override

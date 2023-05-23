@@ -46,7 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
         loginRedirectText = findViewById(R.id.loginRedirectText);
 
         //Make function go back in action bar
-        getSupportActionBar().setTitle("Go Back Home Page");
+        getSupportActionBar().setTitle("Go Back Login");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 

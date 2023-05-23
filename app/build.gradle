@@ -64,4 +64,9 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
 
+    //Start to add function from chatgpt
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+
+    //Make logo in splash become round
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

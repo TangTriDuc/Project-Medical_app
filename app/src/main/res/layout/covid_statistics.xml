@@ -173,7 +173,7 @@
                 android:id="@+id/scrollStats"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone">
+                >
 
                 <!--Edit Global Stats-->
                 <LinearLayout
@@ -184,7 +184,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/global_stats"
+                        android:text="@string/global_statistics"
                         android:textAllCaps="true"
                         android:textSize="28sp"
                         android:textStyle="bold"

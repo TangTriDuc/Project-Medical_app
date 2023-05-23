@@ -6,12 +6,16 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,8 +56,12 @@ public class CovidStatistics extends AppCompatActivity {
     FirebaseAuth auth;
 
     //Make logout with google auth
+    GoogleSignInButton googleBtn;
     GoogleSignInOptions gOptions;
     GoogleSignInClient gClient;
+
+    //Take checkbox remember me from Login.java
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +82,9 @@ public class CovidStatistics extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollStats);
         pieChart = findViewById(R.id.piechart);
 
+        //Process checkbox remember me
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
         //Receive auth from firebase
         auth = FirebaseAuth.getInstance();
 
@@ -82,9 +93,10 @@ public class CovidStatistics extends AppCompatActivity {
         gClient = GoogleSignIn.getClient(this, gOptions);
         GoogleSignInAccount gAccount = GoogleSignIn.getLastSignedInAccount(this);
 
+
         //Make function go back in action bar
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Go Back Sign Up"); //Thiết lập tiêu đề nếu muốn
+        actionBar.setTitle("Go Back Home Page"); //Thiết lập tiêu đề nếu muốn
         actionBar.setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -137,24 +149,18 @@ public class CovidStatistics extends AppCompatActivity {
 
                 },
                 // new Response.ErrorListener()
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //Process Loader & Scroll to show/hide when load APi
-                        simpleArcLoader.stop();
-                        simpleArcLoader.setVisibility(View.GONE);
-                        scrollView.setVisibility(View.VISIBLE);
-                        Toast.makeText(CovidStatistics.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                error -> {
+                    //Process Loader & Scroll to show/hide when load APi
+                    simpleArcLoader.stop();
+                    simpleArcLoader.setVisibility(View.GONE);
+                    scrollView.setVisibility(View.VISIBLE);
+                    Toast.makeText(CovidStatistics.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                 });
 
         //hằng đợi giữ các Request
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         //Thực thi
         requestQueue.add(request);
-
-
-
 
     }
 
@@ -164,29 +170,65 @@ public class CovidStatistics extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), AffectedCountries.class));
     }
 
+    //Make btn CHATGPT
+    private void ChatAI() {
+        startActivity(new Intent(CovidStatistics.this, SplashChatActivity.class));
+    }
+
     //Make process logout
     private void logout() {
-        // Sign out Firebase
-        auth.signOut();
 
-        // Sign out Google account
-        gClient.signOut().addOnCompleteListener(this, task -> {
-            // Handle sign-out result
-            if (task.isSuccessful()) {
-                // Sign-out successful, proceed with Firebase sign out
-                auth.signOut();
-                Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+        // Create an AlertDialog.Builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(CovidStatistics.this);
+        builder.setTitle("LOGOUT");
+        builder.setMessage("Are you sure you want to LOGOUT!!!");
 
-                // Redirect to login or home screen
-                // Replace LoginActivity.class with your desired login activity
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            } else {
-                // Sign-out failed
-                Toast.makeText(this, "Logout failed", Toast.LENGTH_SHORT).show();
-            }
-        });
+
+        //Make alert dialog logout
+        builder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Sign out Firebase with google account & Remember
+                        auth.signOut();
+
+                        // Sign out Google account & Remember me
+                        gClient.signOut().addOnCompleteListener(CovidStatistics.this, task -> {
+                            // Handle sign-out result
+                            if (task.isSuccessful()) {
+                                // Sign-out successful, proceed with Firebase sign out
+                                auth.signOut();
+
+                                // Clear the saved credentials
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.remove("email");
+                                editor.remove("password");
+                                editor.apply();
+                                Toast.makeText(CovidStatistics.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+
+                                // Redirect to LoginActivity
+                                Intent intent = new Intent(CovidStatistics.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                // Sign-out failed
+                                Toast.makeText(CovidStatistics.this, "Logout failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
+                // Set negative button
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Dismiss the dialog
+                        dialog.dismiss();
+                    }
+                });
+
+                // Create and show the AlertDialog
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
 
     }
 
@@ -200,13 +242,15 @@ public class CovidStatistics extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.logout) {
-            logout();
-            return true;
-        } else if (id == android.R.id.home) {
+        if (id == android.R.id.home) {
             onBackPressed();
             return true;
-        }
+        } else if (id == R.id.logout) {
+            logout();
+            return true;
+        } else if (id == R.id.ChatAI){
+            ChatAI();
+    }
 
         return super.onOptionsItemSelected(item);
     }

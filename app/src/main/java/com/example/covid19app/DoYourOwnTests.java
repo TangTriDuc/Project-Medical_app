@@ -29,7 +29,7 @@ public class DoYourOwnTests extends AppCompatActivity {
         Follow = findViewById(R.id.btnFollow);
 
         //Make function go back in action bar
-        getSupportActionBar().setTitle("Do Your Own Test Covid");
+        getSupportActionBar().setTitle("Go Back Home Page");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 

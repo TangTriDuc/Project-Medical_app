@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/background"
+    android:background="@mipmap/background"
     tools:context=".LoginActivity">
 
     <androidx.cardview.widget.CardView
@@ -45,7 +45,7 @@
                 android:drawableStart="@drawable/ic_baseline_email_24"
                 android:paddingStart="10dp"
                 android:textColor="@color/black"
-                android:drawablePadding="8dp"/>
+                android:drawablePadding="3dp"/>
 
             <EditText
                 android:id="@+id/login_password"
@@ -63,7 +63,7 @@
                 android:longClickable="false"
                 android:ems="10"
                 android:textColor="@color/black"
-                android:drawablePadding="8dp"/>
+                android:drawablePadding="3dp"/>
 
             <Button
                 android:id="@+id/login_button"
@@ -80,12 +80,29 @@
                 android:id="@+id/forgot_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="6dp"
                 android:padding="8dp"
+                android:paddingStart="1dp"
+                android:paddingEnd="1dp"
                 android:text="@string/forgot_password"
                 android:textColor="@color/lavender"
                 android:textSize="16sp" />
+
+            <!--Remember me-->
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-37dp"
+                android:text="Remember me"
+                android:padding="8dp"
+                android:layout_gravity="left"
+                android:paddingStart="1dp"
+                android:paddingEnd="1dp"
+                android:textColor="@color/lavender"
+                android:textSize="16sp"/>
+
 
             <com.developer.gbuttons.GoogleSignInButton
                 android:id="@+id/googleBtn"

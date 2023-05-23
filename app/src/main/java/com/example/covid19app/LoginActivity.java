@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -21,6 +23,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +59,10 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInOptions gOptions;
     GoogleSignInClient gClient;
 
+    //Make checkbox remember me
+    SharedPreferences sharedPreferences;
+    CheckBox rememberMeCheckBox;
+
 
 
     @Override
@@ -69,13 +76,14 @@ public class LoginActivity extends AppCompatActivity {
         signupRedirectText = findViewById(R.id.signUpRedirectText);
         forgotPassword = findViewById(R.id.forgot_password);
         googleBtn = findViewById(R.id.googleBtn);
+        rememberMeCheckBox = findViewById(R.id.checkbox);
 
         //Receive auth from firebase
         auth = FirebaseAuth.getInstance();
 
         //Make function go back in action bar
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Go Back Sign Up"); //Thiết lập tiêu đề nếu muốn
+        actionBar.setTitle("Go Back Home Page"); //Thiết lập tiêu đề nếu muốn
         actionBar.setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -110,7 +118,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         //Process btn login
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +133,15 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
                                         Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                                        // Save user's credentials if "Remember Me" is checked
+                                        if (rememberMeCheckBox.isChecked()) {
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("email", email);
+                                            editor.putString("password", pass);
+                                            editor.apply();
+                                        }
+
                                         startActivity(new Intent(LoginActivity.this, CovidStatistics.class));
                                         finish();
                                     }
@@ -153,6 +169,29 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
+
+        //Make checkbox remember me
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String savedEmail = sharedPreferences.getString("email", null);
+        String savedPassword = sharedPreferences.getString("password", null);
+
+        if (savedEmail != null && savedPassword != null) {
+            auth.signInWithEmailAndPassword(savedEmail, savedPassword)
+                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            Toast.makeText(LoginActivity.this, "Logged in with saved user & password", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, CovidStatistics.class));
+                            finish();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(LoginActivity.this, "Failed to log in with saved user & password", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
 
         //Process textView Forgot Password
         forgotPassword.setOnClickListener(new View.OnClickListener() {

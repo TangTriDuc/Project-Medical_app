@@ -34,4 +34,9 @@
     <color name="active">#29B6F6</color>
     <color name="critical">#654E92</color>
 
+    <!--Process Splash-->
+<!--    <color name="loadapp">#1058ae</color>-->
+    <color name="loadapp">#473F97</color>
+
+
 </resources>

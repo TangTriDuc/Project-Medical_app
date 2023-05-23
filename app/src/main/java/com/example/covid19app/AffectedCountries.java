@@ -54,7 +54,7 @@ public class AffectedCountries extends AppCompatActivity {
         simpleArcLoader = findViewById(R.id.loader);
 
         //Make function go back in action bar
-        getSupportActionBar().setTitle("Affected Countries");
+        getSupportActionBar().setTitle("Go Back Global Statistics");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
