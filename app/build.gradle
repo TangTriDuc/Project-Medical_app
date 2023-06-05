@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.covid19app'
+    namespace 'com.example.covidapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.covid19app"
+        applicationId "com.example.covidapp"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -27,6 +27,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -35,38 +38,40 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.firebase:firebase-database:20.2.2'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
+    implementation 'com.google.firebase:firebase-auth:22.0.0'
     implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
+    implementation 'com.google.firebase:firebase-database-ktx:20.2.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
-    //Process login &  Sign Up & Forget pass
-    //add library firebase
-    implementation 'com.google.firebase:firebase-auth:22.0.0'
-
-    //add library Google Button
-    implementation 'com.github.TutorialsAndroid:GButton:v1.0.19'
-    implementation 'com.google.android.gms:play-services-auth:20.5.0'
-
-    //Process Covid Statics
-    // add cardview
-    implementation 'androidx.cardview:cardview:1.0.0'
+    //Make logo in splash become round
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //Add arc simple load
+    implementation 'com.leo.simplearcloader:simplearcloader:1.0.+'
     //add pie chart
     implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
     implementation 'com.nineoldandroids:library:2.4.0'
-    //Add arc simple load
-    implementation 'com.leo.simplearcloader:simplearcloader:1.0.+'
-
+    //Process Covid Statics
+    // add cardview
+    implementation 'androidx.cardview:cardview:1.0.0'
     //Add volley to call api
     implementation 'com.android.volley:volley:1.2.1'
 
-    //Add Glide library
+    //Add Glide library to load image in internet
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
+
 
     //Start to add function from chatgpt
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
     //Make logo in splash become round
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //Process google sign in
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
+
 }

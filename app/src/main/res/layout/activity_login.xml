@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:padding="24dp"
+            android:padding="32dp"
             android:background="@drawable/custom_edittext">
 
             <TextView
@@ -35,17 +35,31 @@
                 android:textColor="@color/lavender"/>
 
             <EditText
-                android:id="@+id/login_email"
+                android:id="@+id/login_username"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/input_bg"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
-                android:hint="@string/email"
+                android:hint="Username"
+                android:drawableLeft="@drawable/baseline_person_pin_24"
+                android:drawablePadding="2dp"
+                android:ems="10"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/login_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/input_bg"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                android:hint="Email"
                 android:drawableStart="@drawable/ic_baseline_email_24"
-                android:paddingStart="10dp"
+                android:paddingStart="5dp"
+                android:ems="10"
                 android:textColor="@color/black"
-                android:drawablePadding="3dp"/>
+                android:drawablePadding="2dp"/>
 
             <EditText
                 android:id="@+id/login_password"
@@ -55,7 +69,7 @@
                 android:layout_marginTop="20dp"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:hint="@string/password"
+                android:hint="Password"
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:paddingStart="10dp"
                 android:drawableEnd="@drawable/ic_baseline_visibility_off_24"
@@ -63,17 +77,27 @@
                 android:longClickable="false"
                 android:ems="10"
                 android:textColor="@color/black"
-                android:drawablePadding="3dp"/>
+                android:drawablePadding="2dp"/>
 
             <Button
                 android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/login"
+                android:text="Login"
                 android:textSize="18sp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/lavender"
                 app:cornerRadius = "20dp"/>
+
+
+            <!--Google SignIn-->
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/google_sign_in_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="13dp" />
+
 
             <!--Forgot Password-->
             <TextView
@@ -81,11 +105,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="1dp"
                 android:padding="8dp"
                 android:paddingStart="1dp"
                 android:paddingEnd="1dp"
-                android:text="@string/forgot_password"
+                android:text="Forgot Password?"
                 android:textColor="@color/lavender"
                 android:textSize="16sp" />
 
@@ -94,7 +118,7 @@
                 android:id="@+id/checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-37dp"
+                android:layout_marginTop="-39dp"
                 android:text="Remember me"
                 android:padding="8dp"
                 android:layout_gravity="left"
@@ -104,34 +128,20 @@
                 android:textSize="16sp"/>
 
 
-            <com.developer.gbuttons.GoogleSignInButton
-                android:id="@+id/googleBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/google_sign_in"
-                app:isDarkTheme = "true"
-                android:background="@drawable/btn_google_signin_dark_focus"
-                android:layout_gravity="center"
-                android:paddingStart="60dp"
-                android:paddingEnd="5dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                />
-
 
             <!--Not yet registered? Sign Up-->
             <TextView
                 android:id="@+id/signUpRedirectText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:layout_gravity="center"
-                android:text="@string/not_yet_registered_sign_up"
+                android:text="Not yet registered? Sign Up"
                 android:textAlignment="center"
                 android:textColor="@color/lavender"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                />
 
         </LinearLayout>
 

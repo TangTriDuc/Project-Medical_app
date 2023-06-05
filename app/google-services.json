@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "501085473949",
-    "project_id": "covid-19app-2bfff",
-    "storage_bucket": "covid-19app-2bfff.appspot.com"
+    "project_number": "1084862384857",
+    "firebase_url": "https://covidapp-ac82f-default-rtdb.firebaseio.com",
+    "project_id": "covidapp-ac82f",
+    "storage_bucket": "covidapp-ac82f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:501085473949:android:4e44cc25d4a1c4fc5f9874",
+        "mobilesdk_app_id": "1:1084862384857:android:a4ed22929691ab1f8cccc8",
         "android_client_info": {
-          "package_name": "com.example.covid19app"
+          "package_name": "com.example.covidapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "501085473949-6i0di4tqopekneqabb4cojutlh176mmb.apps.googleusercontent.com",
+          "client_id": "1084862384857-r09cvqr9sv1qn2vdfc2je9qp1nqg5ge5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.covidapp",
+            "certificate_hash": "c8998bb349e04e8b91c8b18284f2c4bc8e43f444"
+          }
+        },
+        {
+          "client_id": "1084862384857-8nf2ejh8tui4d6co0i7s4vumg6avap0m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAN-x1U841bxL1wKu829_ErfdAiKv_IV00"
+          "current_key": "AIzaSyAJ_it3sL44f9t0nUBzLzIRAsktmRCprAY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "501085473949-6i0di4tqopekneqabb4cojutlh176mmb.apps.googleusercontent.com",
+              "client_id": "1084862384857-8nf2ejh8tui4d6co0i7s4vumg6avap0m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

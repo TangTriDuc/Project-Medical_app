@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/drawer_boder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/profileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:padding="16dp"
+        android:background="@drawable/header_bkg"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/user"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/profileName"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="-2dp"-->
+<!--            android:layout_marginEnd="15dp"-->
+<!--            android:paddingStart="10dp"-->
+<!--            android:paddingEnd="10dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:text="username"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textStyle="bold" />-->
+
+        <TextView
+            android:id="@+id/profileEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="email"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="-2dp"
+            android:layout_marginEnd="15dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp"/>
+
+    </LinearLayout>
+
+
+    <!--Make home-->
+    <LinearLayout
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lavender"
+            android:text="Home"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/baseline_home_24"
+            android:drawablePadding="8dp"/>
+
+    </LinearLayout>
+
+    <!--Make setting-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/global"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lavender"
+            android:text="Global Statistics"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/baseline_pie_chart_24"
+            android:drawablePadding="8dp"/>
+
+    </LinearLayout>
+
+    <!--Make share-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chatAi"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lavender"
+            android:text="Chat AI"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/chat"
+            android:drawablePadding="8dp"/>
+
+    </LinearLayout>
+
+    <!--Make about-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/about"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lavender"
+            android:text="About"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/baseline_info_24"
+            android:drawablePadding="8dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/lavender"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logout"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lavender"
+            android:text="Logout"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/baseline_exit_to_app_24"
+            android:drawablePadding="8dp"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
