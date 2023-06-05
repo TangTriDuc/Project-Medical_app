@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <RelativeLayout
+        android:id="@+id/drawablewave"
+        android:layout_width="match_parent"
+        android:layout_height="250sp"
+        android:background="@drawable/ic_wave">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Click Follow to see step test own"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/graphikmedium"
+            android:layout_marginTop="45dp"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:paddingStart="7dp"
+            android:paddingEnd="7dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="1dp"
+            />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnFollow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="179dp"
+        android:background="@drawable/btn_bg"
+        android:text="Follow"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnFollow"
+        android:layout_marginTop="7dp">
+    <TextView
+        android:id="@+id/textviewdata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColorHint="@color/white"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:scrollbars="vertical"
+        android:textSize="20dp"
+        android:layout_below="@id/drawablewave"
+        />
+    </ScrollView>
+
+</RelativeLayout>
